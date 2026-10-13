@@ -5,3 +5,4 @@
 - D3: Machine has 7.4 GB RAM, GPU not yet checked. Plan: baseline locally, transformer fine-tuning on a free Colab GPU unless a local CUDA GPU is found.
 - D4: data/raw, data/processed and models/ are git-ignored (size and dataset licenses).
 - D5: Rejected Kaggle hinglish_cyberbullying_dataset_25000.csv as a research dataset: only 40 unique texts among 25,000 rows (24,960 exact duplicates), so any split leaks. Not used for training or evaluation.
+- D6: Rejected Hinglish_CodeMixed_Data.csv (9,354 rows, labels -1/0) as a primary dataset: in a 30-sample check per class, every label-0 text was a voice-assistant command (timer/alarm/traffic) and label -1 texts were profanity-containing chat, so the label is confounded with source/domain. Several label -1 texts use profanity as filler, so -1 does not mean toxic. 1,152 duplicates after lower/trim. Sorted by label. Source page, license and label definition not verified.
