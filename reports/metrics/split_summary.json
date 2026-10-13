@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "rows_loaded": 4574,
+  "dropped_empty_after_normalisation": 0,
+  "conflicting_label_groups": 3,
+  "dropped_conflicting_rows": 6,
+  "dropped_same_label_near_duplicates": 19,
+  "rows_after_cleaning": 4549,
+  "hate_share_after_cleaning": 0.3627,
+  "splits": {
+    "train": {
+      "rows": 3184,
+      "hate_share": 0.3628
+    },
+    "val": {
+      "rows": 682,
+      "hate_share": 0.3622
+    },
+    "test": {
+      "rows": 683,
+      "hate_share": 0.3631
+    }
+  }
+}
