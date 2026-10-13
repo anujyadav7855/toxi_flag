@@ -10,7 +10,7 @@
 ## Provenance and license (not fully verified)
 - Class counts match Bohra et al. (2018) as reported in a later paper (4,575 tweets; 1,661 hate; 2,914 normal) within one row. Provenance was not verified independently.
 - The original GitHub repo (deepanshu1995/HateSpeech-Hindi-English-Code-Mixed-Social-Media-Text) releases only tweet IDs and labels (4,114 lines in id_annotated.tsv); its README says tweet text is available from the authors on request. Repo license: GPL-3.0.
-- TODO: license of the Kaggle compilation (PRISM, sharduldhekane); permission or confirmation from the original authors.
+- Kaggle compilation license (from the Kaggle page): CC BY-SA 4.0 (attribution required; shared adaptations must use the same license). Still TODO: confirm permission with the original authors.
 
 ## Label definition
 - Original classes: Hate Speech vs Normal Speech. Used as binary. The positive class is called "hate speech", not "toxic"; the toxic/non-toxic mapping needs justification in the report.
@@ -34,3 +34,4 @@
 | hard_examples.csv | Malformed rows (parser error at line 518); first rows are English |
 | Yugrathee28/Hinglish-dataset (Hugging Face) | Not downloaded; dataset card describes a 5,000-row teaser with weak labels and commercial-use restrictions |
 | textdetox/multilingual_toxicity_dataset (hin split) | Not evaluated |
+
