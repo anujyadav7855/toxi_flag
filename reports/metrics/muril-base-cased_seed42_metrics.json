@@ -1,0 +1,89 @@
+{
+  "model": "google/muril-base-cased",
+  "seed": 42,
+  "max_length": 128,
+  "epochs": 4,
+  "batch_size": 16,
+  "lr": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "best_epoch": 4,
+  "selected_on": "validation macro-F1",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6925186323161101,
+      "val_macro_f1": 0.5830603038936373,
+      "val_accuracy": 0.6979472140762464,
+      "val_roc_auc": 0.6424682395644282
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6582731155294869,
+      "val_macro_f1": 0.643263248370978,
+      "val_accuracy": 0.7082111436950147,
+      "val_roc_auc": 0.7069756619665876
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6047672699743779,
+      "val_macro_f1": 0.6789253327482814,
+      "val_accuracy": 0.6979472140762464,
+      "val_roc_auc": 0.7341430499325237
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5592491810944811,
+      "val_macro_f1": 0.6851316277345199,
+      "val_accuracy": 0.717008797653959,
+      "val_roc_auc": 0.7366326957978501
+    }
+  ],
+  "val_metrics": {
+    "accuracy": 0.717008797653959,
+    "precision_hate": 0.6238532110091743,
+    "recall_hate": 0.5506072874493927,
+    "f1_hate": 0.5849462365591398,
+    "macro_f1": 0.6851316277345199,
+    "roc_auc": 0.7366326957978501,
+    "tn": 353,
+    "fp": 82,
+    "fn": 111,
+    "tp": 136
+  },
+  "test_metrics": {
+    "accuracy": 0.6808199121522694,
+    "precision_hate": 0.5688073394495413,
+    "recall_hate": 0.5,
+    "f1_hate": 0.5321888412017167,
+    "macro_f1": 0.6449833094897472,
+    "roc_auc": 0.7003105302187616,
+    "tn": 341,
+    "fp": 94,
+    "fn": 124,
+    "tp": 124
+  },
+  "test_bootstrap": {
+    "accuracy_95ci": [
+      0.6442166910688141,
+      0.7144948755490483
+    ],
+    "macro_f1_95ci": [
+      0.6058779832122361,
+      0.6795251656147379
+    ],
+    "n_boot": 1000
+  },
+  "test_ms_per_comment": 1.2318755666179817,
+  "sizes": {
+    "train": 3184,
+    "val": 682,
+    "test": 683
+  },
+  "versions": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.18.0"
+  },
+  "device": "cuda (Tesla T4)"
+}
