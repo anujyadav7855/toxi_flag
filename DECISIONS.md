@@ -13,3 +13,5 @@
 - D10: Near-duplicate key = lowercase text with URLs, mentions, punctuation and spaces removed. 3 conflicting-label groups (6 rows) dropped; 19 same-label near-duplicates collapsed. 4,574 -> 4,549 rows.
 - D11: clean_text replaces URLs with URL and @mentions with @user and collapses whitespace; keeps case, punctuation, negations, slang and emojis. Raw text kept. Lowercasing happens inside model pipelines; spelling normalization is a later, separate experiment.
 - D12: Stratified 70/15/15 split, random_state=42: train 3,184 / val 682 / test 683. Test set untouched until final evaluation; thresholds tuned on val only.
+- D13: Baseline = TF-IDF (word 1-2 grams or char_wb 2-5 grams, lowercase, sublinear tf, min_df=2) + Logistic Regression (class_weight=balanced). Features and C chosen on validation macro-F1 only; test evaluated once. Bootstrap 95% CI reported because the test set has 683 rows.
+- D14: Baseline analysis shows labels in this dataset are strongly keyword/topic driven ('hate' pushes towards Hate; rape/terrorism/murder towards Normal). Task framing to be decided: hate speech detection on Hinglish tweets, not general toxicity.

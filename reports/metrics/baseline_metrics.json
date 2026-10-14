@@ -1,0 +1,105 @@
+{
+  "seed": 42,
+  "selected": {
+    "features": "char_wb_2_5",
+    "C": 3,
+    "selected_on": "validation macro-F1"
+  },
+  "grid": [
+    {
+      "features": "word_1_2",
+      "C": 0.3,
+      "val_macro_f1": 0.6650522732798444,
+      "val_accuracy": 0.7038123167155426
+    },
+    {
+      "features": "word_1_2",
+      "C": 1,
+      "val_macro_f1": 0.6637396694214877,
+      "val_accuracy": 0.6920821114369502
+    },
+    {
+      "features": "word_1_2",
+      "C": 3,
+      "val_macro_f1": 0.6573064563248612,
+      "val_accuracy": 0.6847507331378299
+    },
+    {
+      "features": "word_1_2",
+      "C": 10,
+      "val_macro_f1": 0.6579675093975271,
+      "val_accuracy": 0.6862170087976539
+    },
+    {
+      "features": "char_wb_2_5",
+      "C": 0.3,
+      "val_macro_f1": 0.6557790756363112,
+      "val_accuracy": 0.6715542521994134
+    },
+    {
+      "features": "char_wb_2_5",
+      "C": 1,
+      "val_macro_f1": 0.6641031665702719,
+      "val_accuracy": 0.6803519061583577
+    },
+    {
+      "features": "char_wb_2_5",
+      "C": 3,
+      "val_macro_f1": 0.6705614290922348,
+      "val_accuracy": 0.6891495601173021
+    },
+    {
+      "features": "char_wb_2_5",
+      "C": 10,
+      "val_macro_f1": 0.6695736434108528,
+      "val_accuracy": 0.6920821114369502
+    }
+  ],
+  "val_metrics": {
+    "accuracy": 0.6891495601173021,
+    "precision_hate": 0.5641025641025641,
+    "recall_hate": 0.6234817813765182,
+    "f1_hate": 0.5923076923076923,
+    "macro_f1": 0.6705614290922348,
+    "roc_auc": 0.724919726371632,
+    "tn": 316,
+    "fp": 119,
+    "fn": 93,
+    "tp": 154
+  },
+  "test_metrics": {
+    "accuracy": 0.636896046852123,
+    "precision_hate": 0.5,
+    "recall_hate": 0.5161290322580645,
+    "f1_hate": 0.5079365079365079,
+    "macro_f1": 0.6101167458476042,
+    "roc_auc": 0.664349276974416,
+    "tn": 307,
+    "fp": 128,
+    "fn": 120,
+    "tp": 128
+  },
+  "test_bootstrap": {
+    "accuracy_95ci": [
+      0.5988286969253295,
+      0.6691068814055637
+    ],
+    "macro_f1_95ci": [
+      0.570103608304008,
+      0.6435162710045117
+    ],
+    "n_boot": 1000
+  },
+  "test_ms_per_comment_batch": 0.24647481699380752,
+  "sizes": {
+    "train": 3184,
+    "val": 682,
+    "test": 683
+  },
+  "versions": {
+    "python": "3.13.15",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4"
+  }
+}
