@@ -1,0 +1,223 @@
+{
+  "members": [
+    "baseline_tfidf_lr",
+    "muril-base-cased_seed42"
+  ],
+  "reference_single_member": "muril-base-cased_seed42",
+  "primary_score": "prob_std",
+  "error_detection_auroc": {
+    "vote_disagreement": {
+      "val": 0.5900705109630059,
+      "test": 0.5834147416005823
+    },
+    "prob_std": {
+      "val": 0.5953078549427433,
+      "test": 0.5834386852085968
+    },
+    "jsd": {
+      "val": 0.5887182459190572,
+      "test": 0.5728364555798184
+    },
+    "ensemble_confidence_unc": {
+      "val": 0.6438284125910901,
+      "test": 0.6476171321304065
+    },
+    "single_confidence_unc": {
+      "val": 0.5767983724848216,
+      "test": 0.5390746769261123
+    }
+  },
+  "coverage_accuracy_test": {
+    "vote_disagreement": {
+      "1.0": 0.6617862371888726,
+      "0.9": 0.6747967479674797,
+      "0.8": 0.696526508226691,
+      "0.7": 0.7118997912317327,
+      "0.6": 0.7195121951219512
+    },
+    "prob_std": {
+      "1.0": 0.6617862371888726,
+      "0.9": 0.6910569105691057,
+      "0.8": 0.6928702010968921,
+      "0.7": 0.7077244258872651,
+      "0.6": 0.7195121951219512
+    },
+    "jsd": {
+      "1.0": 0.6617862371888726,
+      "0.9": 0.6910569105691057,
+      "0.8": 0.6892138939670932,
+      "0.7": 0.6910229645093946,
+      "0.6": 0.7024390243902439
+    },
+    "ensemble_confidence_unc": {
+      "1.0": 0.6617862371888726,
+      "0.9": 0.6861788617886179,
+      "0.8": 0.70018281535649,
+      "0.7": 0.7181628392484343,
+      "0.6": 0.7292682926829268
+    },
+    "single_confidence_unc": {
+      "1.0": 0.6808199121522694,
+      "0.9": 0.6926829268292682,
+      "0.8": 0.70018281535649,
+      "0.7": 0.7098121085594989,
+      "0.6": 0.7170731707317073
+    }
+  },
+  "operating_points": [
+    {
+      "score": "vote_disagreement",
+      "target_rate": 0.1,
+      "tau": Infinity,
+      "val_flagged": 0.0,
+      "test_flagged": 0.0,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6617862371888726,
+      "share_of_errors_flagged": 0.0
+    },
+    {
+      "score": "vote_disagreement",
+      "target_rate": 0.2,
+      "tau": Infinity,
+      "val_flagged": 0.0,
+      "test_flagged": 0.0,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6617862371888726,
+      "share_of_errors_flagged": 0.0
+    },
+    {
+      "score": "vote_disagreement",
+      "target_rate": 0.3,
+      "tau": 0.5,
+      "val_flagged": 0.250733137829912,
+      "test_flagged": 0.24890190336749635,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.7115009746588694,
+      "share_of_errors_flagged": 0.3593073593073593
+    },
+    {
+      "score": "prob_std",
+      "target_rate": 0.1,
+      "tau": 0.1525301287550659,
+      "val_flagged": 0.09970674486803519,
+      "test_flagged": 0.07759882869692533,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.680952380952381,
+      "share_of_errors_flagged": 0.12987012987012986
+    },
+    {
+      "score": "prob_std",
+      "target_rate": 0.2,
+      "tau": 0.11311155829102362,
+      "val_flagged": 0.19941348973607037,
+      "test_flagged": 0.18887262079062958,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6967509025270758,
+      "share_of_errors_flagged": 0.2727272727272727
+    },
+    {
+      "score": "prob_std",
+      "target_rate": 0.3,
+      "tau": 0.08939188684869284,
+      "val_flagged": 0.2991202346041056,
+      "test_flagged": 0.30600292825768666,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.7088607594936709,
+      "share_of_errors_flagged": 0.4025974025974026
+    },
+    {
+      "score": "jsd",
+      "target_rate": 0.1,
+      "tau": 0.07045588372293587,
+      "val_flagged": 0.09970674486803519,
+      "test_flagged": 0.08199121522693997,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6810207336523126,
+      "share_of_errors_flagged": 0.1341991341991342
+    },
+    {
+      "score": "jsd",
+      "target_rate": 0.2,
+      "tau": 0.04277741560632775,
+      "val_flagged": 0.19941348973607037,
+      "test_flagged": 0.18594436310395315,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6906474820143885,
+      "share_of_errors_flagged": 0.2554112554112554
+    },
+    {
+      "score": "jsd",
+      "target_rate": 0.3,
+      "tau": 0.02634816373604698,
+      "val_flagged": 0.2991202346041056,
+      "test_flagged": 0.3162518301610542,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6980728051391863,
+      "share_of_errors_flagged": 0.38961038961038963
+    },
+    {
+      "score": "ensemble_confidence_unc",
+      "target_rate": 0.1,
+      "tau": 0.46238800462678387,
+      "val_flagged": 0.09970674486803519,
+      "test_flagged": 0.08784773060029283,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.6837881219903692,
+      "share_of_errors_flagged": 0.1471861471861472
+    },
+    {
+      "score": "ensemble_confidence_unc",
+      "target_rate": 0.2,
+      "tau": 0.42332852902875173,
+      "val_flagged": 0.19941348973607037,
+      "test_flagged": 0.2020497803806735,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.7027522935779816,
+      "share_of_errors_flagged": 0.2987012987012987
+    },
+    {
+      "score": "ensemble_confidence_unc",
+      "target_rate": 0.3,
+      "tau": 0.39281388020158126,
+      "val_flagged": 0.2991202346041056,
+      "test_flagged": 0.30600292825768666,
+      "acc_all": 0.6617862371888726,
+      "acc_kept": 0.7194092827004219,
+      "share_of_errors_flagged": 0.42424242424242425
+    },
+    {
+      "score": "single_confidence_unc",
+      "target_rate": 0.1,
+      "tau": 0.38841504000000004,
+      "val_flagged": 0.09970674486803519,
+      "test_flagged": 0.10248901903367497,
+      "acc_all": 0.6808199121522694,
+      "acc_kept": 0.6916802610114192,
+      "share_of_errors_flagged": 0.13302752293577982
+    },
+    {
+      "score": "single_confidence_unc",
+      "target_rate": 0.2,
+      "tau": 0.33895183000000007,
+      "val_flagged": 0.19941348973607037,
+      "test_flagged": 0.2005856515373353,
+      "acc_all": 0.6808199121522694,
+      "acc_kept": 0.7014652014652014,
+      "share_of_errors_flagged": 0.25229357798165136
+    },
+    {
+      "score": "single_confidence_unc",
+      "target_rate": 0.3,
+      "tau": 0.3154195799999999,
+      "val_flagged": 0.2991202346041056,
+      "test_flagged": 0.3162518301610542,
+      "acc_all": 0.6808199121522694,
+      "acc_kept": 0.7173447537473233,
+      "share_of_errors_flagged": 0.3944954128440367
+    }
+  ],
+  "sizes": {
+    "val": 682,
+    "test": 683
+  }
+}
