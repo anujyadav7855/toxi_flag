@@ -1,38 +1,41 @@
 {
   "members": [
     "baseline_tfidf_lr",
-    "muril-base-cased_seed42"
+    "muril-base-cased_seed42",
+    "muril-base-cased_seed43",
+    "muril-base-cased_seed44"
   ],
-  "primary": "prob_std",
+  "primary": "ensemble_confidence_unc",
+  "primary_disagreement_only": "prob_std",
   "reference_member": "muril-base-cased_seed42",
   "n_boot": 1000,
   "auroc": {
     "vote_disagreement": {
-      "point": 0.5834147416005823,
+      "point": 0.601693993394118,
       "ci95": [
-        0.5466142864380913,
-        0.6160116328308418
+        0.5620051785631878,
+        0.6390990927071848
       ]
     },
     "prob_std": {
-      "point": 0.5834386852085968,
+      "point": 0.5972389786594411,
       "ci95": [
-        0.536231998261935,
-        0.6273179936880445
+        0.5518887789302067,
+        0.6408399458539883
       ]
     },
     "jsd": {
-      "point": 0.5728364555798184,
+      "point": 0.5871521528450783,
       "ci95": [
-        0.5254710998251437,
-        0.6170751008852925
+        0.5413619410666172,
+        0.6309591755169502
       ]
     },
     "ensemble_confidence_unc": {
-      "point": 0.6476171321304065,
+      "point": 0.6496113605347995,
       "ci95": [
-        0.6049060818335614,
-        0.6899904171611833
+        0.6087671638686185,
+        0.6921777357163269
       ]
     },
     "single_confidence_unc": {
@@ -43,22 +46,30 @@
       ]
     }
   },
-  "primary_minus_reference": {
+  "disagreement_only_minus_reference": {
     "single_confidence_unc": {
-      "mean_diff": 0.04451987351059752,
+      "mean_diff": 0.056842287701499856,
       "ci95": [
-        -0.030020543233126626,
-        0.1128327139356603
+        -0.01015929718515716,
+        0.12083664700433318
       ],
-      "share_diff_le_0": 0.117
+      "share_diff_le_0": 0.045
     },
     "ensemble_confidence_unc": {
-      "mean_diff": -0.0648595511969147,
+      "mean_diff": -0.05339966429549719,
       "ci95": [
-        -0.10769980024873448,
-        -0.022431894092249025
+        -0.08659237881223626,
+        -0.019042189861286026
       ],
-      "share_diff_le_0": 0.998
+      "share_diff_le_0": 1.0
     }
+  },
+  "ensemble_confidence_minus_single_confidence": {
+    "mean_diff": 0.11024195199699705,
+    "ci95": [
+      0.060507670698999816,
+      0.1621513382292209
+    ],
+    "share_diff_le_0": 0.0
   }
 }

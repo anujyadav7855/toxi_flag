@@ -1,0 +1,89 @@
+{
+  "model": "google/muril-base-cased",
+  "seed": 44,
+  "max_length": 128,
+  "epochs": 4,
+  "batch_size": 16,
+  "lr": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "best_epoch": 3,
+  "selected_on": "validation macro-F1",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6868562869091129,
+      "val_macro_f1": 0.4908643269419224,
+      "val_accuracy": 0.5029325513196481,
+      "val_roc_auc": 0.6960537949648657
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6446590794989812,
+      "val_macro_f1": 0.6583158142021224,
+      "val_accuracy": 0.6935483870967742,
+      "val_roc_auc": 0.7180743636279027
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6025778282826869,
+      "val_macro_f1": 0.6649289932872022,
+      "val_accuracy": 0.7214076246334311,
+      "val_roc_auc": 0.7285076085439061
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5642243974172889,
+      "val_macro_f1": 0.659592440080245,
+      "val_accuracy": 0.6950146627565983,
+      "val_roc_auc": 0.7176276234352459
+    }
+  ],
+  "val_metrics": {
+    "accuracy": 0.7214076246334311,
+    "precision_hate": 0.6838709677419355,
+    "recall_hate": 0.4291497975708502,
+    "f1_hate": 0.527363184079602,
+    "macro_f1": 0.6649289932872022,
+    "roc_auc": 0.7285076085439061,
+    "tn": 386,
+    "fp": 49,
+    "fn": 141,
+    "tp": 106
+  },
+  "test_metrics": {
+    "accuracy": 0.6954612005856515,
+    "precision_hate": 0.631578947368421,
+    "recall_hate": 0.3870967741935484,
+    "f1_hate": 0.48,
+    "macro_f1": 0.6323395445134575,
+    "roc_auc": 0.6984844271412681,
+    "tn": 379,
+    "fp": 56,
+    "fn": 152,
+    "tp": 96
+  },
+  "test_bootstrap": {
+    "accuracy_95ci": [
+      0.6588579795021962,
+      0.7306002928257687
+    ],
+    "macro_f1_95ci": [
+      0.5910389337403733,
+      0.6709007264962595
+    ],
+    "n_boot": 1000
+  },
+  "test_ms_per_comment": 1.271384600293014,
+  "sizes": {
+    "train": 3184,
+    "val": 682,
+    "test": 683
+  },
+  "versions": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.18.0"
+  },
+  "device": "cuda (Tesla T4)"
+}

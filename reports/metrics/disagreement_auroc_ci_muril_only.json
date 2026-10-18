@@ -1,0 +1,65 @@
+{
+  "members": [
+    "muril-base-cased_seed42",
+    "muril-base-cased_seed43",
+    "muril-base-cased_seed44"
+  ],
+  "primary": "prob_std",
+  "reference_member": "muril-base-cased_seed42",
+  "n_boot": 1000,
+  "auroc": {
+    "vote_disagreement": {
+      "point": 0.5644690840075915,
+      "ci95": [
+        0.5288242108267833,
+        0.5990414032065611
+      ]
+    },
+    "prob_std": {
+      "point": 0.640545400059934,
+      "ci95": [
+        0.5973161531445793,
+        0.6853207157007389
+      ]
+    },
+    "jsd": {
+      "point": 0.6391868944161423,
+      "ci95": [
+        0.5965004450663894,
+        0.6834602366289181
+      ]
+    },
+    "ensemble_confidence_unc": {
+      "point": 0.6231345519928078,
+      "ci95": [
+        0.5777330089227257,
+        0.6694445410466267
+      ]
+    },
+    "single_confidence_unc": {
+      "point": 0.5390746769261123,
+      "ci95": [
+        0.4892169578754072,
+        0.5865074486979749
+      ]
+    }
+  },
+  "primary_minus_reference": {
+    "single_confidence_unc": {
+      "mean_diff": 0.10109602363134781,
+      "ci95": [
+        0.03980791956318479,
+        0.16095366333398986
+      ],
+      "share_diff_le_0": 0.001
+    },
+    "ensemble_confidence_unc": {
+      "mean_diff": 0.016743673923884834,
+      "ci95": [
+        -0.0174323148242158,
+        0.052948801604712464
+      ],
+      "share_diff_le_0": 0.193
+    }
+  }
+}

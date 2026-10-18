@@ -32,6 +32,8 @@ EPS = 1e-9
 RATES = [0.10, 0.20, 0.30]
 TABLE_COVERAGES = [1.0, 0.9, 0.8, 0.7, 0.6]
 DIS_SCORES = ["vote_disagreement", "prob_std", "jsd"]
+# D21 amendment: the primary score is chosen on validation among all multi-model scores.
+PRIMARY_CANDIDATES = DIS_SCORES + ["ensemble_confidence_unc"]
 
 
 def binary_entropy(p):
@@ -155,9 +157,15 @@ def main():
         aur[name] = {"val": a_val, "test": a_test}
         print(f"{name:<26} {a_val:>7.3f} {a_test:>7.3f}")
 
-    primary = max(DIS_SCORES, key=lambda n: -1 if np.isnan(aur[n]["val"]) else aur[n]["val"])
-    print(f"\nprimary disagreement score (best validation error-detection AUROC): {primary}")
+    def best_on_val(candidates):
+        return max(candidates, key=lambda n: -1 if np.isnan(aur[n]["val"]) else aur[n]["val"])
 
+    primary = best_on_val(PRIMARY_CANDIDATES)
+    primary_dis = best_on_val(DIS_SCORES)
+    print(f"\nprimary score (best validation error-detection AUROC among multi-model scores, D21): {primary}")
+    print(f"best disagreement-only score on validation: {primary_dis}")
+
+    rng = np.random.default_rng(args.seed)
     print("\nTest accuracy of the comments kept when the least certain ones are removed (random tie-break)")
     print(f"{'score':<26}" + "".join(f"{f'keep {int(c * 100)}%':>10}" for c in TABLE_COVERAGES))
     curves = {}
@@ -213,6 +221,7 @@ def main():
 
     results = {
         "members": tags, "reference_single_member": tags[ref_idx], "primary_score": primary,
+        "primary_disagreement_only": primary_dis,
         "error_detection_auroc": aur, "coverage_accuracy_test": curves, "operating_points": operating,
         "sizes": {"val": int(len(yv)), "test": int(len(yt))},
     }

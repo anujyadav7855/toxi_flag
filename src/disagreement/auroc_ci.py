@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 from sklearn.metrics import f1_score
 
-from engine import DIS_SCORES, error_auroc, load_members, score_sets, stack
+from engine import DIS_SCORES, PRIMARY_CANDIDATES, error_auroc, load_members, score_sets, stack
 
 
 def main():
@@ -41,9 +41,15 @@ def main():
     _, sv = score_sets(Pv, ref_idx)
     _, st = score_sets(Pt, ref_idx)
 
-    val_auc = {n: error_auroc(yv, sv[n][1], sv[n][0]) for n in DIS_SCORES}
-    primary = max(DIS_SCORES, key=lambda n: -1 if np.isnan(val_auc[n]) else val_auc[n])
-    print(f"members: {tags}\nreference single member: {tags[ref_idx]} | primary disagreement score: {primary}\n")
+    val_auc = {n: error_auroc(yv, sv[n][1], sv[n][0]) for n in PRIMARY_CANDIDATES}
+
+    def best_on_val(candidates):
+        return max(candidates, key=lambda n: -1 if np.isnan(val_auc[n]) else val_auc[n])
+
+    primary = best_on_val(PRIMARY_CANDIDATES)
+    primary_dis = best_on_val(DIS_SCORES)
+    print(f"members: {tags}\nreference single member: {tags[ref_idx]}")
+    print(f"primary score (D21): {primary} | best disagreement-only score: {primary_dis}\n")
 
     rng = np.random.default_rng(args.seed)
     n = len(yt)
@@ -54,8 +60,9 @@ def main():
             draws[name].append(error_auroc(yt[idx], pred[idx], score[idx]))
     draws = {k: np.array(v) for k, v in draws.items()}
 
-    results = {"members": tags, "primary": primary, "reference_member": tags[ref_idx],
-               "n_boot": args.n_boot, "auroc": {}, "primary_minus_reference": {}}
+    results = {"members": tags, "primary": primary, "primary_disagreement_only": primary_dis,
+               "reference_member": tags[ref_idx], "n_boot": args.n_boot, "auroc": {},
+               "disagreement_only_minus_reference": {}, "ensemble_confidence_minus_single_confidence": {}}
     print(f"Test error-detection AUROC, 95% bootstrap CI ({args.n_boot} resamples)")
     for name in st:
         point = error_auroc(yt, st[name][1], st[name][0])
@@ -63,15 +70,22 @@ def main():
         results["auroc"][name] = {"point": point, "ci95": [float(lo), float(hi)]}
         print(f"  {name:<26} {point:.3f}  [{lo:.3f}, {hi:.3f}]")
 
-    print(f"\nPaired difference in test AUROC: {primary} minus reference score")
-    for ref in ("single_confidence_unc", "ensemble_confidence_unc"):
-        diff = draws[primary] - draws[ref]
+    def paired(name_a, name_b):
+        diff = draws[name_a] - draws[name_b]
         diff = diff[~np.isnan(diff)]
         lo, hi = np.percentile(diff, [2.5, 97.5])
-        results["primary_minus_reference"][ref] = {
-            "mean_diff": float(diff.mean()), "ci95": [float(lo), float(hi)],
-            "share_diff_le_0": float((diff <= 0).mean())}
-        print(f"  vs {ref:<26} mean {diff.mean():+.3f}  95% CI [{lo:+.3f}, {hi:+.3f}]  share <= 0: {(diff <= 0).mean():.3f}")
+        return {"mean_diff": float(diff.mean()), "ci95": [float(lo), float(hi)], "share_diff_le_0": float((diff <= 0).mean())}
+
+    def show(label, res):
+        print(f"  {label:<58} mean {res['mean_diff']:+.3f}  95% CI [{res['ci95'][0]:+.3f}, {res['ci95'][1]:+.3f}]  share <= 0: {res['share_diff_le_0']:.3f}")
+
+    print(f"\nPaired difference in test AUROC (best disagreement-only score {primary_dis} minus reference)")
+    for ref in ("single_confidence_unc", "ensemble_confidence_unc"):
+        results["disagreement_only_minus_reference"][ref] = paired(primary_dis, ref)
+        show(f"{primary_dis} - {ref}", results["disagreement_only_minus_reference"][ref])
+    print("\nPaired difference in test AUROC (ensemble confidence minus single-model confidence)")
+    results["ensemble_confidence_minus_single_confidence"] = paired("ensemble_confidence_unc", "single_confidence_unc")
+    show("ensemble_confidence_unc - single_confidence_unc", results["ensemble_confidence_minus_single_confidence"])
 
     Path(args.out_json).write_text(json.dumps(results, indent=2), encoding="utf-8")
     print(f"\nSaved: {args.out_json}")
