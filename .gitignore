@@ -8,3 +8,4 @@ data/processed/
 /models/
 outputs/
 *.zip
+*_smoke_*
