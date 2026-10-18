@@ -5,6 +5,7 @@
     "muril-base-cased_seed44"
   ],
   "primary": "prob_std",
+  "primary_disagreement_only": "prob_std",
   "reference_member": "muril-base-cased_seed42",
   "n_boot": 1000,
   "auroc": {
@@ -44,7 +45,7 @@
       ]
     }
   },
-  "primary_minus_reference": {
+  "disagreement_only_minus_reference": {
     "single_confidence_unc": {
       "mean_diff": 0.10109602363134781,
       "ci95": [
@@ -61,5 +62,13 @@
       ],
       "share_diff_le_0": 0.193
     }
+  },
+  "ensemble_confidence_minus_single_confidence": {
+    "mean_diff": 0.084352349707463,
+    "ci95": [
+      0.039372920741316424,
+      0.12871105196971688
+    ],
+    "share_diff_le_0": 0.001
   }
 }
